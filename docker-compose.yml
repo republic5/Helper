@@ -1,0 +1,7 @@
+version: '3'
+services:
+  Abwehr-bot:
+    build: .
+    volumes:
+      - ./config.yml:/config.yml
+
