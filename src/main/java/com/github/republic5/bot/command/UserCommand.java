@@ -61,7 +61,7 @@ public class UserCommand implements ICommand {
 
         }
 
-        // not work?
+        // On Indent
         String clientName;
         AtomicReference<String> tmp = new AtomicReference<>();
         member.getActiveClients().forEach(clientType -> {
