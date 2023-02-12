@@ -30,9 +30,6 @@ pipeline {
                 success {
                     archiveArtifacts 'target/*.jar'
 		    setBuildStatus("Build succeeded", "SUCCESS");
-		    withCredentials([string(credentialsId: 'WEBHOOK', variable: 'url')]) {
-		        discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '${env.BUILD_URL}', result: '', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Helper build status', webhookURL: '$url'
-		    }
 		}
 		   
                 failure {
@@ -68,6 +65,14 @@ pipeline {
             }
             
 	}
+	    
+	stage('webhook to discord') {
+	        steps {
+		      withCredentials([string(credentialsId: 'WEBHOOK', variable: 'url')]) {
+		      	discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '${env.BUILD_URL}', result: '', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Helper build status', webhookURL: '$url'
+	         }
+	     }
+	 }
 		
     }
     
