@@ -76,7 +76,7 @@ pipeline {
                 		title: '', 
 				webhookURL: '${env.url}', 
                   		successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'),
-                  		thumbnail: '',
+                  		thumbnail: ''
 	         }
 	     }
 	 }
