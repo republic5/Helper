@@ -73,7 +73,7 @@ pipeline {
                   		footer: "", 
 				link: "${env.JOB_URL}",
 		                result: currentBuild.currentResult, 
-                		title: "${buildName}", 
+                		title: "${env.buildName}", 
 				webhookURL: '"${env.url}"', 
                   		successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'),
                   		thumbnail: ""
