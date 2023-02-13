@@ -69,7 +69,14 @@ pipeline {
 	stage('webhook to discord') {
 	        steps {
 		      withCredentials([string(credentialsId: 'WEBHOOK', variable: 'url')]) {
-		      	discordSend description: '', footer: '', image: '', link: '', result: '', scmWebUrl: '', thumbnail: '', title: '${env.JOB_NAME}', webhookURL: '$url'
+		      	discordSend description: '', 
+                  		footer: '', 
+				link: '${env.JOB_URL}', 
+		                result: currentBuild.currentResult, 
+                		title: '', 
+				webhookURL: '${env.url}', 
+                  		successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'),
+                  		thumbnail: '',
 	         }
 	     }
 	 }
