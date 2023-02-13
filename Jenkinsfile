@@ -22,7 +22,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		sh "echo ${JENKINS_URL}"
                 sh "mvn clean package"
 
             }
