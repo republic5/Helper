@@ -69,6 +69,7 @@ pipeline {
 	stage('webhook to discord') {
 	        steps {
 		    withCredentials([string(credentialsId: 'WEBHOOK', variable: 'url')]) {
+			sh "echo ${env.url}"
 		      	discordSend description: "", 
                   		footer: "", 
 				link: "${env.JOB_URL}",
