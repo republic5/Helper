@@ -49,7 +49,7 @@ pipeline {
         stage('Push to docker registry') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                	sh "docker login -u ${env.Username} -p ${env.Password}"
+                    sh "docker login -u ${env.Username} -p ${env.Password}"
                     sh 'docker push nightfoxx/helper:latest'
                 }
                 
@@ -69,8 +69,8 @@ pipeline {
 	    
 	stage('webhook to discord') {
 	        steps {
-		      withCredentials([string(credentialsId: 'WEBHOOK', variable: 'url')]) {
-			def title = "${buildName}"
+		    withCredentials([string(credentialsId: 'WEBHOOK', variable: 'url')]) {
+		        def title = "${buildName}"
 			def webhookUrl = "${env.url}"
 			      
 		      	discordSend description: "", 
@@ -83,8 +83,5 @@ pipeline {
                   		thumbnail: ""
 	         }
 	     }
-	 }
-		
-    }
-    
+	}    
 }
