@@ -74,7 +74,7 @@ pipeline {
 				link: "${env.JOB_URL}",
 		                result: currentBuild.currentResult, 
                 		title: "${env.buildName}", 
-				webhookURL: 'https://discord.com/api/webhooks/1074689444625530950/zMufCAk21VKsVa8889HdMy8gM8OuDp8GS4rtazrFQ0Qlu109lwo5MquwWxptZMrL530w', 
+				webhookURL: '${env.url}', 
                   		successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'),
                   		thumbnail: ""
 	         }
