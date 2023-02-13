@@ -63,23 +63,6 @@ pipeline {
         	        setBuildStatus("Push failed", "FAILURE");
                 }                
             }
-            
 	}
-	    
-	stage('webhook to discord') {
-	        steps {
-		    withCredentials([string(credentialsId: 'WEBHOOK', variable: 'url')]) {
-			sh "echo ${env.url}"
-		      	discordSend description: "", 
-                  		footer: "", 
-				link: "${env.JOB_URL}",
-		                result: currentBuild.currentResult, 
-                		title: "${env.buildName}", 
-				webhookURL: '${env.url}', 
-                  		successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'),
-                  		thumbnail: ""
-	         }
-	     }
-	}    
     }
 }
